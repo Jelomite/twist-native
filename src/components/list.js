@@ -11,9 +11,12 @@ class List extends Component {
           data={this.props.data}
           renderItem={({item}: any) => (
             <ListItem
-              containerStyle={this.props.style.containerStyle}
-              titleStyle={this.props.style.titleStyle}
+              containerStyle={this.props.style.listContainer}
+              titleStyle={this.props.style.listTitle}
+              subtitleStyle={this.props.style.listSubtitle}
+              titleStyle={this.props.style.listTitle}
               title={item.title}
+              subtitle={item.ongoing ? "Ongoing" : undefined}
             />
           )}
         />

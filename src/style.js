@@ -59,7 +59,7 @@ export default StyleSheet.create({
     borderColor: "transparent",
     borderTopColor: "transparent",
     borderTopWidth: 0,
-    borderBottomWidth: 0,
+    borderBottomWidth: 0
   },
   searchBarInputContainer: {
     backgroundColor: accent
@@ -67,5 +67,15 @@ export default StyleSheet.create({
   searchBarInput: {
     backgroundColor: accent,
     color: "rgba(255,255,255,.5)"
+  },
+  listContainer: {
+    borderBottomColor: elBg,
+    backgroundColor: bg
+  },
+  listTitle: {
+    color: "white"
+  },
+  listSubtitle: {
+    color: accent
   }
 });
