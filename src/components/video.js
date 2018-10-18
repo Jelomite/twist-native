@@ -20,7 +20,6 @@ function secondsToTime(time) {
 class VideoPlayer extends Component {
   state = {
     visibleSeeker: true,
-    statusbarVisible: false,
     paused: false,
     progress: 0,
     duration: 0,
@@ -37,12 +36,13 @@ class VideoPlayer extends Component {
 
   fullScreenHandler = () => {
     this.setState({visibleSeeker: !this.state.visibleSeeker});
-    this.setState({fullScreen: !this.state.fullScreen});
-    if (this.state.fullScreen) {
-      Orientation.lockToPortrait();
-    } else {
-      Orientation.lockToLandscape();
-    }
+    this.setState({fullScreen: !this.state.fullScreen}, () => {
+      if (!this.state.fullScreen) {
+        Orientation.lockToPortrait();
+      } else {
+        Orientation.lockToLandscape();
+      }
+    });
   };
 
   handleMainButtonTouch = () => {
@@ -87,18 +87,17 @@ class VideoPlayer extends Component {
 
   render() {
     const {height, width} = Dimensions.get("window");
-    // const height = width / (16 / 9);
     return (
       <View
         style={{
           backgroundColor: "#000"
         }}
       >
-        <StatusBar hidden={!this.state.statusbarVisible} />
+        <StatusBar hidden={this.state.fullScreen} />
         <TouchableWithoutFeedback onPress={this.handleVideoPress}>
           <Video
             paused={this.state.paused}
-            source=this.props.video
+            source={this.props.source}
             style={
               !this.state.fullScreen
                 ? {
