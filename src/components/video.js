@@ -98,9 +98,7 @@ class VideoPlayer extends Component {
         <TouchableWithoutFeedback onPress={this.handleVideoPress}>
           <Video
             paused={this.state.paused}
-            source={{
-              uri: props.video
-            }}
+            source=this.props.video
             style={
               !this.state.fullScreen
                 ? {
