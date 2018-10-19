@@ -6,7 +6,8 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   TouchableOpacity,
-  StatusBar
+  StatusBar,
+  BackHandler
 } from "react-native";
 import Video from "react-native-video";
 import ProgressBar from "react-native-progress/Bar";
@@ -31,9 +32,24 @@ class VideoPlayer extends Component {
     Orientation.lockToPortrait();
   }
 
+  componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
+  }
+
   componentWillUnmount() {
     Orientation.unlockAllOrientations();
+    BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
   }
+
+  handleBackPress = () => {
+    if (this.state.fullScreen) {
+      this.setState({fullScreen: false}, () => {
+        Orientation.lockToPortrait();
+      });
+      this.setState({visibleSeeker: true});
+      return true;
+    }
+  };
 
   fullScreenHandler = () => {
     this.setState({visibleSeeker: !this.state.visibleSeeker});
