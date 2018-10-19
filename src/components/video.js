@@ -23,7 +23,8 @@ class VideoPlayer extends Component {
     paused: false,
     progress: 0,
     duration: 0,
-    fullScreen: false
+    fullScreen: false,
+    portraitWidth: Dimensions.get("window").width
   };
 
   componentWillMount() {
@@ -86,7 +87,6 @@ class VideoPlayer extends Component {
   };
 
   render() {
-    const {height, width} = Dimensions.get("window");
     return (
       <View
         style={{
@@ -101,11 +101,11 @@ class VideoPlayer extends Component {
             style={
               !this.state.fullScreen
                 ? {
-                    width: "100%",
-                    height: width / (16 / 9)
+                    width: this.state.portraitWidth,
+                    height: this.state.portraitWidth / (16 / 9)
                   }
                 : {
-                    height
+                    height: this.state.portraitWidth
                   }
             }
             resizeMode="contain"
