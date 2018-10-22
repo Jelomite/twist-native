@@ -25,7 +25,7 @@ class VideoPlayer extends Component {
     progress: 0,
     duration: 0,
     fullScreen: false,
-    portraitWidth: Dimensions.get("window").width
+    portraitWidth: Dimensions.get("window").width,
   };
 
   componentWillMount() {
@@ -113,7 +113,9 @@ class VideoPlayer extends Component {
         <TouchableWithoutFeedback onPress={this.handleVideoPress}>
           <Video
             paused={this.state.paused}
-            source={this.props.source}
+            source={{
+              uri: this.props.source
+            }}
             style={
               !this.state.fullScreen
                 ? {
