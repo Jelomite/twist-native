@@ -1,0 +1,436 @@
+{
+  "219": {
+    "25506": {
+      "episode_id": 25506,
+      "anime_id": 219,
+      "created_at": "2016-12-28 14:09:34",
+      "updated_at": "2016-12-28 14:09:34",
+      "progress": 1386.652023,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "25507": {
+      "episode_id": 25507,
+      "anime_id": 219,
+      "created_at": "2016-12-28 14:09:34",
+      "updated_at": "2016-12-28 14:09:34",
+      "progress": 1383.658161,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "25508": {
+      "episode_id": 25508,
+      "anime_id": 219,
+      "created_at": "2016-12-28 14:09:34",
+      "updated_at": "2016-12-28 14:09:34",
+      "progress": 141.539194,
+      "watched_at": "2016-12-28 14:09:34"
+    },
+    "lastWatched": {
+      "episode_id": 25508,
+      "anime_id": 219,
+      "created_at": "2016-12-28 14:09:34",
+      "updated_at": "2016-12-28 14:09:34",
+      "progress": 141.539194,
+      "watched_at": "2016-12-28 14:09:34"
+    },
+    "lastCompleted": {
+      "episode_id": 25507,
+      "anime_id": 219,
+      "created_at": "2016-12-28 14:09:34",
+      "updated_at": "2016-12-28 14:09:34",
+      "progress": 1383.658161,
+      "watched_at": "2016-12-28 14:09:34"
+    }
+  },
+  "775": {
+    "27942": {
+      "episode_id": 27942,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1380.711903,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27943": {
+      "episode_id": 27943,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1415.751722,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27944": {
+      "episode_id": 27944,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1321.15443,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27945": {
+      "episode_id": 27945,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1326.175688,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27946": {
+      "episode_id": 27946,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1415.988402,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27947": {
+      "episode_id": 27947,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1316.234184,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27948": {
+      "episode_id": 27948,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1359.959449,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27949": {
+      "episode_id": 27949,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1330.811368,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27950": {
+      "episode_id": 27950,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1414.674166,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27951": {
+      "episode_id": 27951,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1295.636846,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27952": {
+      "episode_id": 27952,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:42",
+      "updated_at": "2017-02-08 00:19:42",
+      "progress": 1372.862542,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27953": {
+      "episode_id": 27953,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:43",
+      "updated_at": "2017-02-08 00:19:43",
+      "progress": 1409.467803,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27954": {
+      "episode_id": 27954,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:43",
+      "updated_at": "2017-02-08 00:19:43",
+      "progress": 0.687697,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "27955": {
+      "episode_id": 27955,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:43",
+      "updated_at": "2017-02-08 00:19:43",
+      "progress": 0.186975,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "lastWatched": {
+      "episode_id": 27953,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:43",
+      "updated_at": "2017-02-08 00:19:43",
+      "progress": 1409.467803,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "lastCompleted": {
+      "episode_id": 27955,
+      "anime_id": 775,
+      "created_at": "2017-02-08 00:19:43",
+      "updated_at": "2017-02-08 00:19:43",
+      "progress": 0.186975,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    }
+  },
+  "792": {
+    "29040": {
+      "episode_id": 29040,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 7.037774,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29041": {
+      "episode_id": 29041,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29042": {
+      "episode_id": 29042,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29043": {
+      "episode_id": 29043,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29044": {
+      "episode_id": 29044,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29045": {
+      "episode_id": 29045,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29046": {
+      "episode_id": 29046,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29047": {
+      "episode_id": 29047,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29048": {
+      "episode_id": 29048,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29049": {
+      "episode_id": 29049,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29050": {
+      "episode_id": 29050,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29051": {
+      "episode_id": 29051,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29052": {
+      "episode_id": 29052,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 0,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29053": {
+      "episode_id": 29053,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1369.964559,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29054": {
+      "episode_id": 29054,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1356.333974,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29055": {
+      "episode_id": 29055,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1460.755675,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29056": {
+      "episode_id": 29056,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1361.303211,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29057": {
+      "episode_id": 29057,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1356.503203,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29058": {
+      "episode_id": 29058,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1364.405156,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29059": {
+      "episode_id": 29059,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1376.029411,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29060": {
+      "episode_id": 29060,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1367.238039,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29061": {
+      "episode_id": 29061,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1371.218075,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29062": {
+      "episode_id": 29062,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1376.480054,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29063": {
+      "episode_id": 29063,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1363.28508,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "29064": {
+      "episode_id": 29064,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1480.618667,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    },
+    "lastCompleted": {
+      "episode_id": 29064,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1480.618667,
+      "watched_at": "2016-12-28 14:09:34"
+    },
+    "lastWatched": {
+      "episode_id": 29064,
+      "anime_id": 792,
+      "created_at": "2017-03-09 23:35:23",
+      "updated_at": "2017-03-09 23:35:23",
+      "progress": 1480.618667,
+      "watched_at": "2016-12-28 14:09:34",
+      "completed": true
+    }
+  }
+}

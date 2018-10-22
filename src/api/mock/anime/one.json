@@ -1,0 +1,222 @@
+{
+  "id": 204,
+  "title": "Toaru Majutsu no Index",
+  "alt_title": "A Certain Magical Index",
+  "season": 1,
+  "ongoing": 0,
+  "description": "Set in a city of scientifically advanced superhuman students, but in a world where magic is also real. Touma Kamijou’s right hand, the Imagine Breaker, will negate all magic, psychic, or divine powers, but not his own bad luck. One day he finds a young girl hanging on his balcony railing. She turns out to be a nun from the Church of England, and her mind has been implanted with the Index-Librorum-Prohibitorum - all the magical texts the Church has removed from circulation.",
+  "hb_id": 3725,
+  "created_at": "2016-08-12 00:56:52",
+  "updated_at": "2016-08-14 12:03:30",
+  "hidden": 0,
+  "mal_id": null,
+  "slug": {
+    "id": 642,
+    "slug": "toaru-majutsu-no-index",
+    "anime_id": 204,
+    "created_at": "2016-08-14 12:03:28",
+    "updated_at": "2016-08-14 12:03:28"
+  },
+  "episodes": [
+    {
+      "id": 11694,
+
+      "number": 0,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:54",
+      "updated_at": "2016-08-20 12:34:54"
+    },
+    {
+      "id": 11695,
+
+      "number": 1,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:54",
+      "updated_at": "2016-08-20 12:34:54"
+    },
+    {
+      "id": 11696,
+
+      "number": 2,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11697,
+
+      "number": 3,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11698,
+
+      "number": 4,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11699,
+
+      "number": 5,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11700,
+
+      "number": 6,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11701,
+
+      "number": 7,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11702,
+
+      "number": 8,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11703,
+
+      "number": 9,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11704,
+
+      "number": 10,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11705,
+
+      "number": 11,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11706,
+
+      "number": 12,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11707,
+
+      "number": 13,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11708,
+
+      "number": 14,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11709,
+
+      "number": 15,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11710,
+
+      "number": 16,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11711,
+
+      "number": 17,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11712,
+
+      "number": 18,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11713,
+
+      "number": 19,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11714,
+
+      "number": 20,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11715,
+
+      "number": 21,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11716,
+
+      "number": 22,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11717,
+
+      "number": 23,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    },
+    {
+      "id": 11718,
+
+      "number": 24,
+      "anime_id": 204,
+      "created_at": "2016-08-20 12:34:55",
+      "updated_at": "2016-08-20 12:34:55"
+    }
+  ]
+}
