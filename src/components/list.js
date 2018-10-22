@@ -17,6 +17,7 @@ class List extends Component {
               titleStyle={this.props.style.listTitle}
               title={item.title}
               subtitle={item.ongoing ? "Ongoing" : undefined}
+              onPress={() => this.props.onPress(item)}
             />
           )}
         />
