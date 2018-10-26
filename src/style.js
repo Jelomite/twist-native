@@ -8,7 +8,6 @@ export default StyleSheet.create({
   safeAreaView: {
     flex: 1,
     backgroundColor: bg,
-    paddingTop: 15
   },
   scrollView: {
     flex: 1
