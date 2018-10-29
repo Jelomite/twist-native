@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import {
-  View,
-  Text,
-  Dimensions,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  StatusBar,
-  BackHandler
+	View,
+	Text,
+	Dimensions,
+	TouchableWithoutFeedback,
+	TouchableOpacity,
+	StatusBar,
+	BackHandler
 } from "react-native";
 import Video from "react-native-video";
 import ProgressBar from "react-native-progress/Bar";
@@ -15,187 +14,190 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Orientation from "react-native-orientation";
 
 function secondsToTime(time) {
-  return ~~(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + (time % 60);
+	return ~~(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + (time % 60);
 }
 
 class VideoPlayer extends Component {
-  state = {
-    visibleSeeker: true,
-    paused: false,
-    progress: 0,
-    duration: 0,
-    fullScreen: false,
-    portraitWidth: Dimensions.get("window").width,
-  };
+	constructor(props){
+		super(props);
+		this.state = {
+			visibleSeeker: true,
+			paused: false,
+			progress: 0,
+			duration: 0,
+			fullScreen: false,
+			portraitWidth: Dimensions.get("window").width,
+		};
+	}
 
-  componentWillMount() {
-    Orientation.lockToPortrait();
-  }
 
-  componentDidMount() {
-    BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
-  }
+	componentWillMount() {
+		Orientation.lockToPortrait();
+	}
 
-  componentWillUnmount() {
-    Orientation.unlockAllOrientations();
-    BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
-  }
+	componentDidMount() {
+		BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
+	}
 
-  handleBackPress = () => {
-    if (this.state.fullScreen) {
-      this.setState({fullScreen: false}, () => {
-        Orientation.lockToPortrait();
-      });
-      this.setState({visibleSeeker: true});
-      return true;
-    }
-  };
+	componentWillUnmount() {
+		Orientation.unlockAllOrientations();
+		BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
+	}
 
-  fullScreenHandler = () => {
-    this.setState({visibleSeeker: !this.state.visibleSeeker});
-    this.setState({fullScreen: !this.state.fullScreen}, () => {
-      if (!this.state.fullScreen) {
-        Orientation.lockToPortrait();
-      } else {
-        Orientation.lockToLandscape();
-      }
-    });
-  };
+	handleBackPress(){
+		if (this.state.fullScreen) {
+			this.setState({fullScreen: false}, () => {
+				Orientation.lockToPortrait();
+			});
+			this.setState({visibleSeeker: true});
+			return true;
+		}
+	}
 
-  handleMainButtonTouch = () => {
-    if (this.state.progress >= 1) {
-      this.player.seek(0);
-    }
+	fullScreenHandler() {
+		this.setState({visibleSeeker: !this.state.visibleSeeker});
+		this.setState({fullScreen: !this.state.fullScreen}, () => {
+			if (!this.state.fullScreen) {
+				Orientation.lockToPortrait();
+			} else {
+				Orientation.lockToLandscape();
+			}
+		});
+	}
 
-    this.setState(state => {
-      return {
-        paused: !state.paused
-      };
-    });
-  };
+	handleMainButtonTouch() {
+		if (this.state.progress >= 1) {
+			this.player.seek(0);
+		}
 
-  handleProgressPress = e => {
-    const position = e.nativeEvent.locationX;
-    const progress = (position / 250) * this.state.duration;
-    const isPlaying = !this.state.paused;
+		this.setState(state => {
+			return {
+				paused: !state.paused
+			};
+		});
+	}
 
-    this.player.seek(progress);
-  };
+	handleProgressPress(e) {
+		const position = e.nativeEvent.locationX;
+		const progress = (position / 250) * this.state.duration;
 
-  handleProgress = progress => {
-    this.setState({
-      progress: progress.currentTime / this.state.duration
-    });
-  };
+		this.player.seek(progress);
+	}
 
-  handleEnd = () => {
-    this.setState({paused: true});
-  };
+	handleProgress(progress) {
+		this.setState({
+			progress: progress.currentTime / this.state.duration
+		});
+	}
 
-  handleLoad = meta => {
-    this.setState({
-      duration: meta.duration
-    });
-  };
+	handleEnd() {
+		this.setState({paused: true});
+	}
 
-  handleVideoPress = () => {
-    this.setState({visibleSeeker: !this.state.visibleSeeker});
-  };
+	handleLoad(meta) {
+		this.setState({
+			duration: meta.duration
+		});
+	}
 
-  render() {
-    return (
-      <View
-        style={{
-          backgroundColor: "#000"
-        }}
-      >
-        <StatusBar hidden={this.state.fullScreen} />
-        <TouchableWithoutFeedback onPress={this.handleVideoPress}>
-          <Video
-            paused={this.state.paused}
-            source={{
-              uri: this.props.source
-            }}
-            style={
-              !this.state.fullScreen
-                ? {
-                    width: this.state.portraitWidth,
-                    height: this.state.portraitWidth / (16 / 9)
-                  }
-                : {
-                    height: this.state.portraitWidth
-                  }
-            }
-            resizeMode="contain"
-            onLoad={this.handleLoad}
-            onProgress={this.handleProgress}
-            onEnd={this.handleEnd}
-            ref={ref => (this.player = ref)}
-          />
-        </TouchableWithoutFeedback>
-        <View>
-          {this.state.visibleSeeker ? (
-            <View>
-              <View
-                style={{
-                  backgroundColor: "rgba(0, 0, 0, 0.2)",
-                  height: 48,
-                  left: 0,
-                  bottom: 0,
-                  right: 0,
-                  position: "absolute",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                  paddingHorizontal: 10
-                }}
-              >
-                <TouchableOpacity onPress={this.handleMainButtonTouch}>
-                  <Ionicons
-                    name={!this.state.paused ? "ios-pause" : "ios-play"}
-                    size={30}
-                    color="#FFF"
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this.handleProgressPress}>
-                  <View
-                    style={{
-                      marginLeft: 15
-                    }}
-                  >
-                    <ProgressBar
-                      progress={this.state.progress}
-                      color="#FFF"
-                      unfilledColor="rgba(255,255,255,.1)"
-                      borderColor="rgba(0,0,0,0)"
-                      width={250}
-                      height={5}
-                    />
-                  </View>
-                </TouchableOpacity>
-                <Text
-                  style={{
-                    color: "#FFF",
-                    marginLeft: 15,
-                    marginRight: 15
-                  }}
-                >
-                  {secondsToTime(
-                    Math.floor(this.state.progress * this.state.duration)
-                  )}
-                </Text>
-                <TouchableOpacity onPress={this.fullScreenHandler}>
-                  <Ionicons name="ios-qr-scanner" size={30} color="#FFF" />
-                </TouchableOpacity>
-              </View>
-            </View>
-          ) : (
-            <View />
-          )}
-        </View>
-      </View>
-    );
-  }
+	handleVideoPress() {
+		this.setState({visibleSeeker: !this.state.visibleSeeker});
+	}
+
+	render() {
+		return (
+			<View
+				style={{
+					backgroundColor: "#000"
+				}}
+			>
+				<StatusBar hidden={this.state.fullScreen} />
+				<TouchableWithoutFeedback onPress={this.handleVideoPress}>
+					<Video
+						paused={this.state.paused}
+						source={{
+							uri: this.props.source
+						}}
+						style={
+							!this.state.fullScreen
+								? {
+									width: this.state.portraitWidth,
+									height: this.state.portraitWidth / (16 / 9)
+								}
+								: {
+									height: this.state.portraitWidth
+								}
+						}
+						resizeMode="contain"
+						onLoad={this.handleLoad}
+						onProgress={this.handleProgress}
+						onEnd={this.handleEnd}
+						ref={ref => (this.player = ref)}
+					/>
+				</TouchableWithoutFeedback>
+				<View>
+					{this.state.visibleSeeker ? (
+						<View>
+							<View
+								style={{
+									backgroundColor: "rgba(0, 0, 0, 0.2)",
+									height: 48,
+									left: 0,
+									bottom: 0,
+									right: 0,
+									position: "absolute",
+									flexDirection: "row",
+									alignItems: "center",
+									justifyContent: "space-around",
+									paddingHorizontal: 10
+								}}
+							>
+								<TouchableOpacity onPress={this.handleMainButtonTouch}>
+									<Ionicons
+										name={!this.state.paused ? "ios-pause" : "ios-play"}
+										size={30}
+										color="#FFF"
+									/>
+								</TouchableOpacity>
+								<TouchableOpacity onPress={this.handleProgressPress}>
+									<View
+										style={{
+											marginLeft: 15
+										}}
+									>
+										<ProgressBar
+											progress={this.state.progress}
+											color="#FFF"
+											unfilledColor="rgba(255,255,255,.1)"
+											borderColor="rgba(0,0,0,0)"
+											width={250}
+											height={5}
+										/>
+									</View>
+								</TouchableOpacity>
+								<Text
+									style={{
+										color: "#FFF",
+										marginLeft: 15,
+										marginRight: 15
+									}}
+								>
+									{secondsToTime(
+										Math.floor(this.state.progress * this.state.duration)
+									)}
+								</Text>
+								<TouchableOpacity onPress={this.fullScreenHandler}>
+									<Ionicons name="ios-qr-scanner" size={30} color="#FFF" />
+								</TouchableOpacity>
+							</View>
+						</View>
+					) : (
+						<View />
+					)}
+				</View>
+			</View>
+		);
+	}
 }
 
 export default VideoPlayer;

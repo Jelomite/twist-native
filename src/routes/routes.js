@@ -1,14 +1,14 @@
 import Home from "../views/home";
-import Episode from '../viiews/episode'
+import Episode from "../viiews/episode";
 import {createStackNavigator} from "react-navigation";
 
 
 const routes = createStackNavigator(
-  {
-    Home,
-    Episode
-  },
-  {}
+	{
+		Home,
+		Episode
+	},
+	{}
 );
 
 export default routes;
