@@ -36,7 +36,7 @@ class VideoPlayer extends Component {
 	}
 
 	componentDidMount() {
-		BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
+		BackHandler.addEventListener("hardwareBackPress", this.handleBackPress.bind(this));
 	}
 
 	componentWillUnmount() {
