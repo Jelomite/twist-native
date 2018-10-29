@@ -8,6 +8,10 @@ import List from "../components/list";
 import api from "../api";
 
 class Home extends Component {
+	static navigationOptions = {
+		header: null
+	};
+
 	constructor(props) {
 		super(props);
 		this.state = {

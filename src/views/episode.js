@@ -8,6 +8,15 @@ import api from "../api";
 import Style from "../style";
 
 class Episodes extends Component {
+	static navigationOptions = {
+		headerTitle: null,
+		headerStyle: {
+			borderBottomColor: "transparent"
+		},
+		headerLeft: () => null,
+		headerTransparent: true
+	};
+	
 	constructor(props) {
 		super(props);
 		this.state = {
