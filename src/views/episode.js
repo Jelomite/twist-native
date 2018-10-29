@@ -16,11 +16,11 @@ class Episodes extends Component {
 		headerLeft: () => null,
 		headerTransparent: true
 	};
-	
+
 	constructor(props) {
 		super(props);
 		this.state = {
-			title: "toaru majutsu no index",
+			title: "",
 			episodeList: [],
 			currentEpisode: 0,
 			episodeURIs: []
@@ -28,7 +28,9 @@ class Episodes extends Component {
 	}
 
 	async componentDidMount() {
-		const slug = "toaru-majutsu-no-index"; //temporary, later change to navigation.getParam("id", 0)
+		const {navigation} = this.props;
+		const slug = navigation.getParam("slug", 0); //temporary, later change to navigation.getParam("id", 0)
+		this.setState({title: navigation.getParam("title", 0)});
 		const episodeList = await api.request.anime.get(slug);
 		const sortedList = episodeList.episodes.sort(
 			(a, b) => a.number - b.number
@@ -58,7 +60,7 @@ class Episodes extends Component {
 										<Text style={iOSUIKit.footnoteEmphasizedWhite}> ANIME </Text>
 									</View>
 									<Text style={iOSUIKit.largeTitleEmphasizedWhite}>
-										{"Title Placeholder"}
+										{this.state.title}
 									</Text>
 									<Text style={iOSUIKit.footnoteEmphasizedWhite}>
 										{"episode: " + (currentEpisode + 1)}

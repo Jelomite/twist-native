@@ -43,7 +43,8 @@ class Home extends Component {
 	press(anime) {
 		return this.props.navigation.navigate("Episode", {
 			title: anime.title,
-			id: anime.kitsu
+			id: anime.id,
+			slug: anime.slug.slug
 		});
 	}
 
