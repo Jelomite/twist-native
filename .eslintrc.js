@@ -4,12 +4,13 @@ module.exports = {
     node: true
   },
   extends: "eslint:recommended",
+  parser: "babel-eslint",
   parserOptions: {
     ecmaFeatures: {
       jsx: true
     },
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: "module",
   },
   globals: {
     React: true
