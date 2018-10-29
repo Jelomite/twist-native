@@ -1,49 +1,63 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React from "react";
+import {View} from "react-native";
+import {createBottomTabNavigator} from "react-navigation";
+import Route from "./routes/routes";
+import {bg, elBg} from "./style";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const App = createBottomTabNavigator(
+	{
+		Home: {
+			screen: Route
+		}
+	},
+	{
+		navigationOptions: ({navigation}) => ({
+			tabBarIcon: ({focused, tintColor}) => {
+				const {routeName} = navigation.state;
+				let iconName = "";
+				switch (routeName) {
+				case "Home":
+					iconName = `ios-home${focused ? "" : "-outline"}`;
+					break;
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
-}
+				case "Chat":
+					iconName = `ios-chatbubbles${focused ? "" : "-outline"}`;
+					break;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+				case "Profile":
+					iconName = `ios-person${focused ? "" : "-outline"}`;
+					break;
+
+				case "Settings":
+					iconName = `ios-settings${focused ? "" : "-outline"}`;
+					break;
+
+				default:
+					break;
+				}
+				return <Ionicons name={iconName} size={25} color={tintColor} />;
+			}
+		}),
+		tabBarOptions: {
+			activeTintColor: "white",
+			inactiveTintColor: "gray",
+			activeBackgroundColor: elBg,
+			tabStyle: {
+				backgroundColor: bg,
+				borderWidth: 0
+			},
+			style: {
+				backgroundColor: bg
+			}
+		}
+	}
+);
+
+
+export default () => (
+	<View style={{flex: 1}}>
+		<App />
+	</View>
+);

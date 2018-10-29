@@ -1,5 +1,5 @@
 import Home from "../views/home";
-import Episode from "../viiews/episode";
+import Episode from "../views/episode";
 import {createStackNavigator} from "react-navigation";
 
 
