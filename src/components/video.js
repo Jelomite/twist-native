@@ -112,7 +112,7 @@ class VideoPlayer extends Component {
 				}}
 			>
 				<StatusBar hidden={this.state.fullScreen} />
-				<TouchableWithoutFeedback onPress={this.handleVideoPress}>
+				<TouchableWithoutFeedback onPress={this.handleVideoPress.bind(this)}>
 					<Video
 						paused={this.state.paused}
 						source={{
@@ -129,9 +129,9 @@ class VideoPlayer extends Component {
 								}
 						}
 						resizeMode="contain"
-						onLoad={this.handleLoad}
-						onProgress={this.handleProgress}
-						onEnd={this.handleEnd}
+						onLoad={this.handleLoad.bind(this)}
+						onProgress={this.handleProgress.bind(this)}
+						onEnd={this.handleEnd.bind(this)}
 						ref={ref => (this.player = ref)}
 					/>
 				</TouchableWithoutFeedback>
@@ -152,14 +152,14 @@ class VideoPlayer extends Component {
 									paddingHorizontal: 10
 								}}
 							>
-								<TouchableOpacity onPress={this.handleMainButtonTouch}>
+								<TouchableOpacity onPress={this.handleMainButtonTouch.bind(this)}>
 									<Ionicons
 										name={!this.state.paused ? "ios-pause" : "ios-play"}
 										size={30}
 										color="#FFF"
 									/>
 								</TouchableOpacity>
-								<TouchableOpacity onPress={this.handleProgressPress}>
+								<TouchableOpacity onPress={this.handleProgressPress.bind(this)}>
 									<View
 										style={{
 											marginLeft: 15
@@ -186,7 +186,7 @@ class VideoPlayer extends Component {
 										Math.floor(this.state.progress * this.state.duration)
 									)}
 								</Text>
-								<TouchableOpacity onPress={this.fullScreenHandler}>
+								<TouchableOpacity onPress={this.fullScreenHandler.bind(this)}>
 									<Ionicons name="ios-qr-scanner" size={30} color="#FFF" />
 								</TouchableOpacity>
 							</View>
