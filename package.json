@@ -9,7 +9,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-mock-adapter": "^1.15.0",
-    "crypto-js": "^3.1.9-1",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.3",
     "react-native-elements": "^0.19.1",
@@ -18,11 +17,12 @@
     "react-native-typography": "^1.4.0",
     "react-native-vector-icons": "4.6.0",
     "react-native-video": "^3.2.1",
-    "react-navigation": "^2.18.0",
-    "utils": "^0.3.1"
+    "react-navigation": "^2.18.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-react": "^7.11.1",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.48.1",
     "react-test-renderer": "16.6.0-alpha.8af6728"
