@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {
 	View,
 	Text,
+	Slider,
 	Dimensions,
 	TouchableWithoutFeedback,
 	TouchableOpacity,
@@ -9,7 +10,6 @@ import {
 	BackHandler
 } from "react-native";
 import Video from "react-native-video";
-import ProgressBar from "react-native-progress/Bar";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Orientation from "react-native-orientation";
 
@@ -66,10 +66,6 @@ class VideoPlayer extends Component {
 	}
 
 	handleMainButtonTouch() {
-		if (this.state.progress >= 1) {
-			this.player.seek(0);
-		}
-
 		this.setState(state => {
 			return {
 				paused: !state.paused
@@ -77,17 +73,18 @@ class VideoPlayer extends Component {
 		});
 	}
 
-	handleProgressPress(e) {
-		const position = e.nativeEvent.locationX;
-		const progress = (position / 250) * this.state.duration;
-
-		this.player.seek(progress);
+	handleProgressPress(val) {
+		this.player.seek(val);
+		this.setState({seeking: false});
 	}
 
 	handleProgress(progress) {
-		this.setState({
-			progress: progress.currentTime / this.state.duration
-		});
+		if (!this.state.seeking) {
+			this.setState({
+				progress: progress.currentTime
+			});
+		}
+
 	}
 
 	handleEnd() {
@@ -159,22 +156,16 @@ class VideoPlayer extends Component {
 										color="#FFF"
 									/>
 								</TouchableOpacity>
-								<TouchableOpacity onPress={this.handleProgressPress.bind(this)}>
-									<View
-										style={{
-											marginLeft: 15
-										}}
-									>
-										<ProgressBar
-											progress={this.state.progress}
-											color="#FFF"
-											unfilledColor="rgba(255,255,255,.1)"
-											borderColor="rgba(0,0,0,0)"
-											width={250}
-											height={5}
-										/>
-									</View>
-								</TouchableOpacity>
+								<Slider
+									style={{
+										flex: 1
+									}}
+									minimumValue={0}
+									maximumValue={this.state.duration}
+									onSlidingComplete={this.handleProgressPress.bind(this)}
+									onValueChange={(val) => this.setState({progress: val, seeking: true})}
+									value={this.state.progress}
+								/>
 								<Text
 									style={{
 										color: "#FFF",
@@ -183,7 +174,7 @@ class VideoPlayer extends Component {
 									}}
 								>
 									{secondsToTime(
-										Math.floor(this.state.progress * this.state.duration)
+										Math.floor(this.state.progress)
 									)}
 								</Text>
 								<TouchableOpacity onPress={this.fullScreenHandler.bind(this)}>
