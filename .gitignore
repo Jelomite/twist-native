@@ -24,6 +24,9 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
+android/keystores
+android/app/release/
+android/gradle.properties
 build/
 .idea
 .gradle
