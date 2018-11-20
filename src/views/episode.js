@@ -22,9 +22,10 @@ class Episodes extends Component {
 		this.state = {
 			title: "",
 			episodeList: [],
-			currentEpisode: 0,
+			currentEpisode: 1,
 			episodeURIs: []
 		};
+		this.changeEpisode = this.changeEpisode.bind(this);
 	}
 
 	async componentDidMount() {
@@ -79,7 +80,7 @@ class Episodes extends Component {
 						<List
 							data={this.state.episodeList}
 							style={Style}
-							onPress={this.changeEpisode.bind(this)}
+							onPress={this.changeEpisode}
 						/>
 					</View>
 				</ScrollView>

@@ -28,6 +28,14 @@ class VideoPlayer extends Component {
 			fullScreen: false,
 			portraitWidth: Dimensions.get("window").width,
 		};
+		this.handleLoad = this.handleLoad.bind(this);
+		this.handleProgress = this.handleProgress.bind(this);
+		this.handleEnd = this.handleEnd.bind(this);
+		this.handleMainButtonTouch = this.handleMainButtonTouch.bind(this);
+		this.handleProgressPress = this.handleProgressPress.bind(this);
+		this.fullScreenHandler = this.fullScreenHandler.bind(this);
+		this.handleBackPress = this.handleBackPress.bind(this);
+		this.handleVideoPress = this.handleVideoPress.bind(this);
 	}
 
 
@@ -36,7 +44,7 @@ class VideoPlayer extends Component {
 	}
 
 	componentDidMount() {
-		BackHandler.addEventListener("hardwareBackPress", this.handleBackPress.bind(this));
+		BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
 	}
 
 	componentWillUnmount() {
@@ -109,7 +117,7 @@ class VideoPlayer extends Component {
 				}}
 			>
 				<StatusBar hidden={this.state.fullScreen} />
-				<TouchableWithoutFeedback onPress={this.handleVideoPress.bind(this)}>
+				<TouchableWithoutFeedback onPress={this.handleVideoPress}>
 					<Video
 						paused={this.state.paused}
 						source={{
@@ -126,9 +134,9 @@ class VideoPlayer extends Component {
 								}
 						}
 						resizeMode="contain"
-						onLoad={this.handleLoad.bind(this)}
-						onProgress={this.handleProgress.bind(this)}
-						onEnd={this.handleEnd.bind(this)}
+						onLoad={this.handleLoad}
+						onProgress={this.handleProgress}
+						onEnd={this.handleEnd}
 						ref={ref => (this.player = ref)}
 					/>
 				</TouchableWithoutFeedback>
@@ -149,7 +157,7 @@ class VideoPlayer extends Component {
 									paddingHorizontal: 10
 								}}
 							>
-								<TouchableOpacity onPress={this.handleMainButtonTouch.bind(this)}>
+								<TouchableOpacity onPress={this.handleMainButtonTouch}>
 									<Ionicons
 										name={!this.state.paused ? "ios-pause" : "ios-play"}
 										size={30}
@@ -162,7 +170,7 @@ class VideoPlayer extends Component {
 									}}
 									minimumValue={0}
 									maximumValue={this.state.duration}
-									onSlidingComplete={this.handleProgressPress.bind(this)}
+									onSlidingComplete={this.handleProgressPress}
 									onValueChange={(val) => this.setState({progress: val, seeking: true})}
 									value={this.state.progress}
 								/>
@@ -177,7 +185,7 @@ class VideoPlayer extends Component {
 										Math.floor(this.state.progress)
 									)}
 								</Text>
-								<TouchableOpacity onPress={this.fullScreenHandler.bind(this)}>
+								<TouchableOpacity onPress={this.fullScreenHandler}>
 									<Ionicons name="ios-qr-scanner" size={30} color="#FFF" />
 								</TouchableOpacity>
 							</View>
