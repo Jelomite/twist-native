@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {View, ScrollView, Text} from "react-native";
+import Button from "../components/button";
 import {SafeAreaView} from "react-navigation";
 import Style from "../style";
 import {iOSUIKit} from "react-native-typography";
@@ -86,6 +87,35 @@ class Home extends Component {
 						/>
 					</View>
 				</ScrollView>
+				<View>
+					<View
+						style={{
+							flexDirection: "row",
+							justifyContent: "space-between",
+							height: 80,
+							padding: 5
+						}}
+					>
+						<View
+							style={{
+								flexDirection: "row"
+							}}
+						>
+							<Button title={"Home"}/>
+						</View>
+
+						<View
+							style={{
+								flexDirection: "row"
+							}}
+						>
+							<Button title={"Chat"}/>
+							<Button title={"Settings"}/>
+						</View>
+
+
+					</View>
+				</View>
 			</SafeAreaView>
 		);
 	}
