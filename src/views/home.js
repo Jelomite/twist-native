@@ -18,8 +18,15 @@ class Home extends Component {
 		this.state = {
 			search: "",
 			animeList: [],
-			filteredAnimeList: []
+			filteredAnimeList: [],
+			settingsModal: false,
+			chatModal: false
 		};
+
+		this.search = this.search.bind(this);
+		this.press = this.press.bind(this);
+		this.clear = this.clear.bind(this);
+		this.toggleModal = this.toggleModal.bind(this);
 	}
 
 	async componentDidMount() {
@@ -47,6 +54,14 @@ class Home extends Component {
 			id: anime.id,
 			slug: anime.slug.slug
 		});
+	}
+
+	toggleModal(modal) {
+		if (modal == "settings") {
+			this.setState({settingsModal: !this.state.settingsModal});
+		} else if (modal == "chat") {
+			this.setState({chatModal: !this.state.chatModal});
+		}
 	}
 
 	render() {
@@ -93,8 +108,8 @@ class Home extends Component {
 							<Button title={"Home"}/>
 						</View>
 						<View style={Style.rowDirection}>
-							<Button title={"Chat"}/>
-							<Button title={"Settings"}/>
+							<Button title={"Chat"} onPress={() => this.toggleModal("chat")}/>
+							<Button title={"Settings"} onPress={() => this.toggleModal("settings")}/>
 						</View>
 					</View>
 				</View>
