@@ -88,32 +88,14 @@ class Home extends Component {
 					</View>
 				</ScrollView>
 				<View>
-					<View
-						style={{
-							flexDirection: "row",
-							justifyContent: "space-between",
-							height: 80,
-							padding: 5
-						}}
-					>
-						<View
-							style={{
-								flexDirection: "row"
-							}}
-						>
+					<View	style={Style.buttonBottomBar}>
+						<View	style={Style.rowDirection}>
 							<Button title={"Home"}/>
 						</View>
-
-						<View
-							style={{
-								flexDirection: "row"
-							}}
-						>
+						<View style={Style.rowDirection}>
 							<Button title={"Chat"}/>
 							<Button title={"Settings"}/>
 						</View>
-
-
 					</View>
 				</View>
 			</SafeAreaView>

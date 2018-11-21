@@ -76,5 +76,14 @@ export default StyleSheet.create({
 	},
 	listSubtitle: {
 		color: accent
+	},
+	rowDirection: {
+		flexDirection: "row"
+	},
+	buttonBottomBar: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		height: 80,
+		padding: 5
 	}
 });
