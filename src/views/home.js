@@ -2,11 +2,12 @@ import React, {Component} from "react";
 import {View, ScrollView, Text} from "react-native";
 import Button from "../components/button";
 import {SafeAreaView} from "react-navigation";
-import Style from "../style";
+import Style, {bg} from "../style";
 import {iOSUIKit} from "react-native-typography";
 import SearchBar from "../components/searchbar";
 import List from "../components/list";
 import api from "../api";
+import Modal from "react-native-modal";
 
 class Home extends Component {
 	static navigationOptions = {
@@ -67,6 +68,19 @@ class Home extends Component {
 	render() {
 		return (
 			<SafeAreaView style={Style.safeAreaView}>
+				<Modal visible={this.state.settingsModal} style={{
+					margin: 5
+				}}>
+					<View style={{
+						backgroundColor: bg,
+						width: "100%",
+						height: "100%"
+					}}>
+						<Button title={"Hide"} onPress={() => this.setState({settingsModal: false})} />
+						<SettingsPage />
+						//TODO: implement settings page.
+					</View>
+				</Modal>
 				<View style={Style.viewAppleBar}>
 					<View style={Style.viewAppleBarContent}>
 						<SearchBar
