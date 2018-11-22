@@ -8,7 +8,7 @@ import SearchBar from "../components/searchbar";
 import List from "../components/list";
 import api from "../api";
 import Modal from "react-native-modal";
-
+import SettingsPage from "./settings";
 class Home extends Component {
 	static navigationOptions = {
 		header: null
@@ -68,17 +68,31 @@ class Home extends Component {
 	render() {
 		return (
 			<SafeAreaView style={Style.safeAreaView}>
-				<Modal visible={this.state.settingsModal} style={{
-					margin: 5
-				}}>
+				<Modal
+					visible={this.state.settingsModal}
+					onBackButtonPress={() => this.setState({settingsModal: false})}
+					style={{
+						margin: 5
+					}}>
 					<View style={{
 						backgroundColor: bg,
 						width: "100%",
 						height: "100%"
 					}}>
-						<Button title={"Hide"} onPress={() => this.setState({settingsModal: false})} />
+						<View style={{
+							alignItems: "flex-end",
+							padding: 5
+						}}>
+							<Button
+								textStyle={{
+									fontSize: 30,
+									marginHorizontal: 20
+								}}
+								title={"X"}
+								onPress={() => this.setState({settingsModal: false})}
+							/>
+						</View>
 						<SettingsPage />
-						//TODO: implement settings page.
 					</View>
 				</Modal>
 				<View style={Style.viewAppleBar}>
