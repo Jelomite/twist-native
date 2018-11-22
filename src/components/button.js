@@ -6,10 +6,13 @@ class Btn extends Component {
 	render() {
 		return (
 			<TouchableOpacity
-				style={styles.buttonStyle}
+				style={[styles.buttonStyle, this.props.buttonStyle]}
 				onPress={this.props.onPress}
 			>
-				<Text style={styles.textStyle}> {this.props.title} </Text>
+				<Text
+					style={[styles.textStyle, this.props.textStyle]}>
+					{this.props.title}
+				</Text>
 			</TouchableOpacity>
 		);
 	}
