@@ -1,9 +1,28 @@
-import React from "react";
+import React, {Component} from "react";
 import {View} from "react-native";
 import Route from "./routes/routes";
 
-export default () => (
-	<View style={{flex: 1}}>
-		<Route />
-	</View>
-);
+class App extends Component {
+	constructor(props){
+		super(props);
+		this.state = {
+		};
+		this.updateState = (val, key) => {
+			this.setState({[val]: key});
+		};
+		this.updateState = this.updateState.bind(this);
+	}
+
+	render(){
+		return (
+			<View style={{flex: 1}}>
+				<Route screenProps={{
+					state: this.state,
+					setState: this.updateState
+				}}/>
+			</View>
+		);
+	}
+}
+
+export default App;

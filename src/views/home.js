@@ -28,12 +28,19 @@ class Home extends Component {
 		this.press = this.press.bind(this);
 		this.clear = this.clear.bind(this);
 		this.toggleModal = this.toggleModal.bind(this);
+		this.store = this.props.screenProps;
 	}
 
 	async componentDidMount() {
 		const shows = await api.request.anime.getAll();
 		this.setState({animeList: shows});
 		this.setState({filteredAnimeList: this.state.animeList});
+	}
+
+	componentDidUpdate(){
+		if (this.store.state != this.props.screenProps.state){
+			this.store.state = this.props.screenProps.state;
+		}
 	}
 
 	search(term) {
