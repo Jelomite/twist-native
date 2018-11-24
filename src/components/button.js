@@ -9,10 +9,13 @@ class Btn extends Component {
 				style={[styles.buttonStyle, this.props.buttonStyle]}
 				onPress={this.props.onPress}
 			>
-				<Text
-					style={[styles.textStyle, this.props.textStyle]}>
-					{this.props.title}
-				</Text>
+				{this.props.title && (
+					<Text
+						style={[styles.textStyle, this.props.textStyle]}>
+						{this.props.title}
+					</Text>
+				)}
+				{this.props.children}
 			</TouchableOpacity>
 		);
 	}
