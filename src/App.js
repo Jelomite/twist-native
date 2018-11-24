@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import {View} from "react-native";
 import Route from "./routes/routes";
+import LoginScreen from "./views/login";
 
 class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
+			logged_in: false
 		};
 		this.updateState = (val, key) => {
 			this.setState({[val]: key});
@@ -16,10 +18,16 @@ class App extends Component {
 	render(){
 		return (
 			<View style={{flex: 1}}>
-				<Route screenProps={{
-					state: this.state,
-					setState: this.updateState
-				}}/>
+				{this.state.logged_in ?
+					<Route screenProps={{
+						state: this.state,
+						setState: this.updateState
+					}}/> :
+					<LoginScreen rootState={{
+						state: this.state,
+						setState: this.updateState
+					}} />
+				}
 			</View>
 		);
 	}

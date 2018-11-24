@@ -99,7 +99,7 @@ class Home extends Component {
 								onPress={() => this.setState({settingsModal: false})}
 							/>
 						</View>
-						<SettingsPage />
+						<SettingsPage appState={this.store}/>
 					</View>
 				</Modal>
 				<View style={Style.viewAppleBar}>
