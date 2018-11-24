@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
 		marginVertical: 10,
 		marginHorizontal: 5,
 		backgroundColor: elBg,
-		borderRadius: 5
+		borderRadius: 5,
+		justifyContent: "space-around"
 	}
 });
 
