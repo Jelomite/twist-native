@@ -3,6 +3,7 @@ import {View, Text} from "react-native";
 import Button from "../components/button";
 import {iOSUIKit} from "react-native-typography";
 import Style, {accent} from "../style";
+import Input from "../components/text-input";
 
 class LoginScreen extends Component {
 	constructor(props){
@@ -44,10 +45,13 @@ class LoginScreen extends Component {
 					<View style={{
 						width: "70%"
 					}}>
+						<Input placeholder={"username"} />
+						<Input placeholder={"password"} />
 						<Button
 							buttonStyle={{
 								alignItems: "center",
 								backgroundColor: accent,
+								height: 50
 							}}
 							title={"Log In"}
 							onPress={() => this.login()} />
