@@ -1,6 +1,8 @@
 import React, {Component} from "react";
-import {View} from "react-native";
+import {View, Text} from "react-native";
 import Button from "../components/button";
+import {iOSUIKit} from "react-native-typography";
+import Style, {accent} from "../style";
 
 class LoginScreen extends Component {
 	constructor(props){
@@ -20,13 +22,38 @@ class LoginScreen extends Component {
 
 	render(){
 		return (
-			<View>
-				<Button
-					buttonStyle={{
-						backgroundColor: "#000000"
-					}}
-					title={"Log In"}
-					onPress={() => this.login()} />
+			<View style={[
+				Style.safeAreaView,
+				{
+					justifyContent: "space-evenly",
+					alignItems: "center"
+				}
+			]}>
+				<View style={{
+					alignItems: "center",
+					width: "100%"
+				}}>
+					<View>
+						<Text style={iOSUIKit.footnoteEmphasizedWhite}>
+							{" Welcome to:"}
+						</Text>
+						<Text style={iOSUIKit.largeTitleEmphasizedWhite}>
+					ANIME TWIST
+						</Text>
+					</View>
+					<View style={{
+						width: "70%"
+					}}>
+						<Button
+							buttonStyle={{
+								alignItems: "center",
+								backgroundColor: accent,
+							}}
+							title={"Log In"}
+							onPress={() => this.login()} />
+					</View>
+
+				</View>
 			</View>
 		);
 	}
