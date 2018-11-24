@@ -20,13 +20,14 @@ function secondsToTime(time) {
 class VideoPlayer extends Component {
 	constructor(props){
 		super(props);
+		const {width, height} = Dimensions.get("window");
 		this.state = {
 			visibleSeeker: true,
 			paused: false,
 			progress: 0,
 			duration: 0,
 			fullScreen: false,
-			portraitWidth: Dimensions.get("window").width,
+			portraitWidth: Math.min(width, height),
 		};
 		this.handleLoad = this.handleLoad.bind(this);
 		this.handleProgress = this.handleProgress.bind(this);
