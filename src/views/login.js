@@ -4,6 +4,7 @@ import Button from "../components/button";
 import {iOSUIKit} from "react-native-typography";
 import Style, {accent} from "../style";
 import Input from "../components/text-input";
+import ATicon from "../svg/ATicon";
 
 class LoginScreen extends Component {
 	constructor(props){
@@ -34,6 +35,7 @@ class LoginScreen extends Component {
 					alignItems: "center",
 					width: "100%"
 				}}>
+					<ATicon />
 					<View>
 						<Text style={iOSUIKit.footnoteEmphasizedWhite}>
 							{" Welcome to:"}
