@@ -9,6 +9,10 @@ import List from "../components/list";
 import api from "../api";
 import Modal from "react-native-modal";
 import SettingsPage from "./settings";
+import ChatIcon from "../svg/chat";
+import SettingsIcon from "../svg/settings";
+
+
 class Home extends Component {
 	static navigationOptions = {
 		header: null
@@ -102,34 +106,31 @@ class Home extends Component {
 						<SettingsPage appState={this.store}/>
 					</View>
 				</Modal>
-				<View style={Style.viewAppleBar}>
-					<View style={Style.viewAppleBarContent}>
-						<SearchBar
-							style={Style}
-							handleSearch={this.search.bind(this)}
-							handleSearchClear={this.clear.bind(this)}
-							searchValue={this.state.search}
-						/>
-						<View style={Style.viewAppleBarRow}>
-							<View>
-								<View style={{opacity: 0.5}}>
-									<Text style={iOSUIKit.footnoteEmphasizedWhite}>
-										ANIME TWIST
-									</Text>
-								</View>
-								<Text style={iOSUIKit.largeTitleEmphasizedWhite}>Home</Text>
-							</View>
-						</View>
-					</View>
-				</View>
-				<ScrollView style={Style.scrollView}>
 
-					<View style={Style.viewAnimeList}>
-						<View style={{opacity: 0.5, paddingLeft: 16}}>
+				<SearchBar
+					style={Style}
+					handleSearch={this.search.bind(this)}
+					handleSearchClear={this.clear.bind(this)}
+					searchValue={this.state.search}
+				/>
+				<ScrollView style={Style.scrollView}>
+					<View style={Style.viewAppleBar}>
+						<View>
+							<View style={{opacity: 0.5}}>
+								<Text style={iOSUIKit.footnoteEmphasizedWhite}>
+										ANIME TWIST
+								</Text>
+							</View>
+							<Text style={iOSUIKit.largeTitleEmphasizedWhite}>Home</Text>
+						</View>
+						<View style={{opacity: 0.5}}>
 							<Text style={iOSUIKit.footnoteEmphasizedWhite}>
 								{"ANIME LIST (" + this.state.filteredAnimeList.length + ")"}
 							</Text>
 						</View>
+					</View>
+					<View style={Style.viewAnimeList}>
+
 						<List
 							data={this.state.filteredAnimeList}
 							style={Style}
@@ -140,11 +141,26 @@ class Home extends Component {
 				<View>
 					<View	style={Style.buttonBottomBar}>
 						<View	style={Style.rowDirection}>
-							<Button title={"Home"}/>
 						</View>
 						<View style={Style.rowDirection}>
-							<Button title={"Chat"} onPress={() => this.toggleModal("chat")}/>
-							<Button title={"Settings"} onPress={() => this.toggleModal("settings")}/>
+							<Button
+								onPress={() => this.toggleModal("chat")}
+								buttonStyle={{
+									width: 65,
+									alignItems: "center"
+								}}
+							>
+								<ChatIcon />
+							</Button>
+							<Button
+								onPress={() => this.toggleModal("settings")}
+								buttonStyle={{
+									width: 65,
+									alignItems: "center"
+								}}
+							>
+								<SettingsIcon />
+							</Button>
 						</View>
 					</View>
 				</View>

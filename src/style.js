@@ -58,14 +58,17 @@ export default StyleSheet.create({
 		borderColor: "transparent",
 		borderTopColor: "transparent",
 		borderTopWidth: 0,
-		borderBottomWidth: 0
+		borderBottomWidth: 0,
+		height: 70
 	},
 	searchBarInputContainer: {
 		backgroundColor: accent
 	},
 	searchBarInput: {
 		backgroundColor: accent,
-		color: "rgba(255,255,255,.5)"
+		color: "rgba(255,255,255,.5)",
+		height: 50,
+		borderRadius: 5,
 	},
 	listContainer: {
 		borderBottomColor: elBg,
@@ -84,6 +87,7 @@ export default StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		height: 80,
-		padding: 5
+		padding: 5,
+		marginHorizontal: 10
 	}
 });
