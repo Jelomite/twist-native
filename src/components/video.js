@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import Video from "react-native-video";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Orientation from "react-native-orientation";
+import Orientation from "react-native-orientation-locker";
 
 function secondsToTime(time) {
 	return ~~(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + (time % 60);
