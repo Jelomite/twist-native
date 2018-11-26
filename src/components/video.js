@@ -37,13 +37,11 @@ class VideoPlayer extends Component {
 		this.fullScreenHandler = this.fullScreenHandler.bind(this);
 		this.handleBackPress = this.handleBackPress.bind(this);
 		this.handleVideoPress = this.handleVideoPress.bind(this);
-		this.setScreenMode = this.setScreenMode.bind(this);
-		this.orientationDidChange = this.orientationDidChange.bind(this);
 	}
 
 
 	componentWillMount() {
-		Orientation.addOrientationListener(this.orientationDidChange);
+		Orientation.lockToPortrait();
 	}
 
 	componentDidMount() {
@@ -53,47 +51,27 @@ class VideoPlayer extends Component {
 	componentWillUnmount() {
 		Orientation.unlockAllOrientations();
 		BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
-		Orientation.removeOrientationListener(this.orientationDidChange);
 	}
 
 	handleBackPress(){
-		Orientation.lockToPortrait();
-		this.setScreenMode("regular");
-	}
-
-	orientationDidChange(UIOrientation, deviceOrientation) {
-		if(deviceOrientation.includes("LANDSCAPE") && UIOrientation.includes("LANDSCAPE")) {
-			this.setScreenMode("full");
-			Orientation.unlockAllOrientations();
-		} else if (deviceOrientation.includes("LANDSCAPE") && UIOrientation.includes("PORTRAIT")) {
-			Orientation.lockToLandscape();
-			this.setScreenMode("full");
-		} else if (deviceOrientation.includes("PORTRAIT") && UIOrientation.includes("PORTRAIT")) {
-			this.setScreenMode("regular");
-			Orientation.unlockAllOrientations();
-		} else if (deviceOrientation.includes("PORTRAIT") && UIOrientation.includes("LANDSCAPE")) {
-			this.setScreenMode("full");
-		}
-	}
-
-	setScreenMode(mode){
-		if (mode == "full") {
-			this.setState({fullScreen: true});
-			this.setState({visibleSeeker: false});
-		} else {
-			this.setState({fullScreen: false});
+		if (this.state.fullScreen) {
+			this.setState({fullScreen: false}, () => {
+				Orientation.lockToPortrait();
+			});
 			this.setState({visibleSeeker: true});
+			return true;
 		}
 	}
 
 	fullScreenHandler() {
-		if (!this.state.fullScreen) {
-			Orientation.lockToLandscape();
-			this.setScreenMode("full");
-		} else {
-			Orientation.lockToPortrait();
-			this.setScreenMode("regular");
-		}
+		this.setState({visibleSeeker: !this.state.visibleSeeker});
+		this.setState({fullScreen: !this.state.fullScreen}, () => {
+			if (!this.state.fullScreen) {
+				Orientation.lockToPortrait();
+			} else {
+				Orientation.lockToLandscape();
+			}
+		});
 	}
 
 	handleMainButtonTouch() {
