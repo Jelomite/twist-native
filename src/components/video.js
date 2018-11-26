@@ -37,11 +37,13 @@ class VideoPlayer extends Component {
 		this.fullScreenHandler = this.fullScreenHandler.bind(this);
 		this.handleBackPress = this.handleBackPress.bind(this);
 		this.handleVideoPress = this.handleVideoPress.bind(this);
+		this.orientationDidChange = this.orientationDidChange.bind(this);
+		this.setFullScreen = this.setFullScreen.bind(this);
 	}
 
 
 	componentWillMount() {
-		Orientation.lockToPortrait();
+		Orientation.addOrientationListener(this.orientationDidChange);
 	}
 
 	componentDidMount() {
@@ -49,27 +51,44 @@ class VideoPlayer extends Component {
 	}
 
 	componentWillUnmount() {
-		Orientation.unlockAllOrientations();
+		Orientation.removeOrientationListener(this.orientationDidChange);
 		BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
 	}
 
-	handleBackPress(){
-		if (this.state.fullScreen) {
-			this.setState({fullScreen: false}, () => {
-				Orientation.lockToPortrait();
-			});
-			this.setState({visibleSeeker: true});
-			return true;
-		}
+	handleBackPress() {
+		this.setFullScreen("regular");
+		return true;
 	}
 
 	fullScreenHandler() {
-		this.setState({visibleSeeker: !this.state.visibleSeeker});
-		this.setState({fullScreen: !this.state.fullScreen}, () => {
-			if (!this.state.fullScreen) {
-				Orientation.lockToPortrait();
-			} else {
-				Orientation.lockToLandscape();
+		if (this.state.fullScreen) {
+			this.setFullScreen("regular");
+			Orientation.lockToPortrait();
+		} else {
+			this.setFullScreen("full");
+			Orientation.lockToLandscape();
+		}
+	}
+
+	setFullScreen(mode) {
+		if (mode == "full") {
+			this.setState({fullScreen: true});
+			this.setState({visibleSeeker: false});
+		} else if (mode == "regular") {
+			this.setState({fullScreen: false});
+			this.setState({visibleSeeker: true});
+		}
+	}
+
+	orientationDidChange(dev) {
+		Orientation.getAutoRotateState((enabled) => {
+			if (enabled) {
+				if (dev.includes("PORTRAIT")) {
+					this.setFullScreen("regular");
+				} else {
+					this.setFullScreen("full");
+				}
+				Orientation.unlockAllOrientations();
 			}
 		});
 	}
