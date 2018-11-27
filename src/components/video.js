@@ -56,8 +56,12 @@ class VideoPlayer extends Component {
 	}
 
 	handleBackPress() {
-		this.setFullScreen("regular");
-		return true;
+		if (this.state.fullScreen == true){
+			this.setFullScreen("regular");
+			Orientation.lockToPortrait(); // for some reason this is necessary...
+			return true;
+		}
+		return false;
 	}
 
 	fullScreenHandler() {
