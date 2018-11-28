@@ -5361,9 +5361,10 @@ react-native-modal@^7.0.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-"react-native-orientation-locker@git+https://github.com/wonday/react-native-orientation-locker.git":
+react-native-orientation-locker@^1.0.22:
   version "1.0.22"
-  resolved "git+https://github.com/wonday/react-native-orientation-locker.git#1e094902f1fc3ed47792013cc6aa7e06c06c91d8"
+  resolved "https://registry.yarnpkg.com/react-native-orientation-locker/-/react-native-orientation-locker-1.0.22.tgz#faf2ddcd6702dd11c01e26fbec120aeccf84c9df"
+  integrity sha512-1m++f5LZy4tVA5IhiWkhHnHxnpzSssQg7t9EVE17xfiVNp+DhZZIOgTPuJdWyTCL5vyXL491k+Zr4wotdep0AA==
 
 react-native-progress@^3.5.0:
   version "3.5.0"
