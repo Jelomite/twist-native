@@ -28,21 +28,6 @@ class Episodes extends Component {
 		this.changeEpisode = this.changeEpisode.bind(this);
 	}
 
-	async componentDidMount() {
-		const {navigation} = this.props;
-		const slug = navigation.getParam("slug", 0); //temporary, later change to navigation.getParam("id", 0)
-		this.setState({title: navigation.getParam("title", 0)});
-		const episodeList = await api.request.anime.get(slug);
-		const sortedList = episodeList.episodes.sort(
-			(a, b) => a.number - b.number
-		);
-		this.setState({episodeList: sortedList});
-		const firstID = this.state.episodeList[0].id;
-		const uris = await api.request.anime.getSources(firstID);
-		this.setState({episodeURIs: uris.map(ep => ep.source)});
-
-	}
-
 	async changeEpisode(e) {
 		this.setState({currentEpisode: e.number});
 	}

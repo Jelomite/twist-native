@@ -2,13 +2,10 @@ import React, {Component} from "react";
 import {View, ScrollView, Text} from "react-native";
 import Button from "../components/button";
 import {SafeAreaView} from "react-navigation";
-import Style, {bg} from "../style";
+import Style from "../style";
 import {iOSUIKit} from "react-native-typography";
 import SearchBar from "../components/searchbar";
 import List from "../components/list";
-import api from "../api";
-import Modal from "react-native-modal";
-import SettingsPage from "./settings";
 import ChatIcon from "../svg/chat";
 import SettingsIcon from "../svg/settings";
 
@@ -31,13 +28,10 @@ class Home extends Component {
 		this.search = this.search.bind(this);
 		this.press = this.press.bind(this);
 		this.clear = this.clear.bind(this);
-		this.toggleModal = this.toggleModal.bind(this);
 		this.store = this.props.screenProps;
 	}
 
 	async componentDidMount() {
-		const shows = await api.request.anime.getAll();
-		this.setState({animeList: shows});
 		this.setState({filteredAnimeList: this.state.animeList});
 	}
 
@@ -61,52 +55,12 @@ class Home extends Component {
 	}
 
 	press(anime) {
-		return this.props.navigation.navigate("Episode", {
-			title: anime.title,
-			id: anime.id,
-			slug: anime.slug.slug
-		});
-	}
-
-	toggleModal(modal) {
-		if (modal == "settings") {
-			this.setState({settingsModal: !this.state.settingsModal});
-		} else if (modal == "chat") {
-			this.setState({chatModal: !this.state.chatModal});
-		}
+		//TODO
 	}
 
 	render() {
 		return (
 			<SafeAreaView style={Style.safeAreaView}>
-				<Modal
-					visible={this.state.settingsModal}
-					onBackButtonPress={() => this.setState({settingsModal: false})}
-					style={{
-						margin: 5
-					}}>
-					<View style={{
-						backgroundColor: bg,
-						width: "100%",
-						height: "100%"
-					}}>
-						<View style={{
-							alignItems: "flex-end",
-							padding: 5
-						}}>
-							<Button
-								textStyle={{
-									fontSize: 30,
-									marginHorizontal: 20
-								}}
-								title={"X"}
-								onPress={() => this.setState({settingsModal: false})}
-							/>
-						</View>
-						<SettingsPage appState={this.store}/>
-					</View>
-				</Modal>
-
 				<SearchBar
 					style={Style}
 					handleSearch={this.search.bind(this)}
