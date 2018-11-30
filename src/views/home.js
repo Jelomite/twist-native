@@ -2,13 +2,14 @@ import React, {Component} from "react";
 import {View, ScrollView, Text} from "react-native";
 import Button from "../components/button";
 import {SafeAreaView} from "react-navigation";
-import Style from "../style";
+import Style, {bg} from "../style";
 import {iOSUIKit} from "react-native-typography";
 import SearchBar from "../components/searchbar";
 import List from "../components/list";
 import ChatIcon from "../svg/chat";
 import SettingsIcon from "../svg/settings";
-
+import Episodes from "./episode";
+import Modal from "react-native-modal";
 
 class Home extends Component {
 	static navigationOptions = {
@@ -21,8 +22,7 @@ class Home extends Component {
 			search: "",
 			animeList: [],
 			filteredAnimeList: [],
-			settingsModal: false,
-			chatModal: false
+			episodesVisible: false,
 		};
 
 		this.search = this.search.bind(this);
@@ -55,12 +55,28 @@ class Home extends Component {
 	}
 
 	press(anime) {
-		//TODO
+		this.setState({episodesVisible: true});
 	}
 
 	render() {
 		return (
 			<SafeAreaView style={Style.safeAreaView}>
+				<Modal
+					isVisible={this.state.episodesVisible}
+					onBackButtonPress={() => this.setState({episodesVisible: false})}
+					style={{
+						margin: 5
+					}}
+				>
+					<View style={{
+						backgroundColor: bg,
+						width: "100%",
+						height: "100%"
+					}}>
+						<Episodes />
+					</View>
+
+				</Modal>
 				<SearchBar
 					style={Style}
 					handleSearch={this.search.bind(this)}
