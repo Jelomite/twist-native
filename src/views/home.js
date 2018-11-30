@@ -98,7 +98,7 @@ class Home extends Component {
 						</View>
 						<View style={Style.rowDirection}>
 							<Button
-								onPress={() => this.toggleModal("chat")}
+								onPress={() => null}
 								buttonStyle={{
 									width: 65,
 									alignItems: "center"
@@ -107,7 +107,9 @@ class Home extends Component {
 								<ChatIcon />
 							</Button>
 							<Button
-								onPress={() => this.toggleModal("settings")}
+								onPress={() => {
+									this.props.navigation.navigate("Settings", {});
+								}}
 								buttonStyle={{
 									width: 65,
 									alignItems: "center"

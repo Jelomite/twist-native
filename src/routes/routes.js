@@ -1,12 +1,12 @@
 import Home from "../views/home";
-import Episode from "../views/episode";
+import Settings from "../views/settings";
 import {createStackNavigator} from "react-navigation";
 
 
 const routes = createStackNavigator(
 	{
 		Home,
-		Episode
+		Settings
 	},
 	{}
 );

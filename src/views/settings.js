@@ -6,12 +6,12 @@ import Button from "../components/button";
 class SettingsPage extends Component {
 	constructor(props){
 		super(props);
-		this.store = props.appState;
+		this.store = props.screenProps;
 	}
 
 	componentDidUpdate() {
-		if (this.store.state != this.props.appState.state) {
-			this.store.state = this.props.appState.rootState;
+		if (this.store.state != this.props.screenProps.state) {
+			this.store.state = this.props.screenProps.rootState;
 		}
 	}
 
