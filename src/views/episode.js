@@ -4,7 +4,6 @@ import {SafeAreaView} from "react-navigation";
 import {iOSUIKit} from "react-native-typography";
 import VideoPlayer from "../components/video";
 import List from "../components/eplist";
-import api from "../api";
 import Style from "../style";
 
 class Episodes extends Component {

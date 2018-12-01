@@ -37,13 +37,12 @@ class VideoPlayer extends Component {
 		this.fullScreenHandler = this.fullScreenHandler.bind(this);
 		this.handleBackPress = this.handleBackPress.bind(this);
 		this.handleVideoPress = this.handleVideoPress.bind(this);
-		this.orientationDidChange = this.orientationDidChange.bind(this);
 		this.setFullScreen = this.setFullScreen.bind(this);
 	}
 
 
 	componentWillMount() {
-		Orientation.addOrientationListener(this.orientationDidChange);
+		Orientation.lockToPortrait();
 	}
 
 	componentDidMount() {
@@ -51,8 +50,8 @@ class VideoPlayer extends Component {
 	}
 
 	componentWillUnmount() {
-		Orientation.removeOrientationListener(this.orientationDidChange);
 		BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
+		Orientation.unlockAllOrientations();
 	}
 
 	handleBackPress() {
@@ -67,10 +66,8 @@ class VideoPlayer extends Component {
 	fullScreenHandler() {
 		if (this.state.fullScreen) {
 			this.setFullScreen("regular");
-			Orientation.lockToPortrait();
 		} else {
 			this.setFullScreen("full");
-			Orientation.lockToLandscape();
 		}
 	}
 
@@ -82,19 +79,6 @@ class VideoPlayer extends Component {
 			this.setState({fullScreen: false});
 			this.setState({visibleSeeker: true});
 		}
-	}
-
-	orientationDidChange(dev) {
-		Orientation.getAutoRotateState((enabled) => {
-			if (enabled) {
-				if (dev.includes("PORTRAIT")) {
-					this.setFullScreen("regular");
-				} else {
-					this.setFullScreen("full");
-				}
-				Orientation.unlockAllOrientations();
-			}
-		});
 	}
 
 	handleMainButtonTouch() {
@@ -134,6 +118,7 @@ class VideoPlayer extends Component {
 	}
 
 	render() {
+		const {width, height} = Dimensions.get("window");
 		return (
 			<View
 				style={{
@@ -145,19 +130,19 @@ class VideoPlayer extends Component {
 					<Video
 						paused={this.state.paused}
 						source={{
-							uri: this.props.source
+							uri: "https://us-at-01.cdn.bunny.sh//anime/jojoougonnokaze/[HorribleSubs]%20JoJo's%20Bizarre%20Adventure%20-%20Golden%20Wind%20-%2001%20[1080p].mp4"
 						}}
 						style={
 							!this.state.fullScreen
 								? {
-									width: this.state.portraitWidth,
-									height: this.state.portraitWidth / (16 / 9)
+									width,
+									height: width / (16 / 9)
 								}
 								: {
-									height: this.state.portraitWidth
+									height,
 								}
 						}
-						resizeMode="contain"
+						resizeMode="cover"
 						onLoad={this.handleLoad}
 						onProgress={this.handleProgress}
 						onEnd={this.handleEnd}

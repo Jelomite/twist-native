@@ -63,9 +63,11 @@ class Home extends Component {
 			<SafeAreaView style={Style.safeAreaView}>
 				<Modal
 					isVisible={this.state.episodesVisible}
+					swipeDirection="down"
+					onSwipe={() => this.setState({episodesVisible: false})}
 					onBackButtonPress={() => this.setState({episodesVisible: false})}
 					style={{
-						margin: 5
+						margin: 0
 					}}
 				>
 					<View style={{
@@ -114,7 +116,7 @@ class Home extends Component {
 						</View>
 						<View style={Style.rowDirection}>
 							<Button
-								onPress={() => null}
+								onPress={() => this.setState({episodesVisible: true})}
 								buttonStyle={{
 									width: 65,
 									alignItems: "center"
