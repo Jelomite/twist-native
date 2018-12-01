@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, ScrollView, Text} from "react-native";
+import {View, ScrollView, Text, Dimensions, BackHandler} from "react-native";
 import Button from "../components/button";
 import {SafeAreaView} from "react-navigation";
 import Style, {bg} from "../style";
@@ -9,7 +9,7 @@ import List from "../components/list";
 import ChatIcon from "../svg/chat";
 import SettingsIcon from "../svg/settings";
 import Episodes from "./episode";
-import Modal from "react-native-modal";
+import SlidePanel from "rn-sliding-up-panel";
 
 class Home extends Component {
 	static navigationOptions = {
@@ -29,10 +29,16 @@ class Home extends Component {
 		this.press = this.press.bind(this);
 		this.clear = this.clear.bind(this);
 		this.store = this.props.screenProps;
+		this.handleBackPress = this.handleBackPress.bind(this);
 	}
 
 	async componentDidMount() {
 		this.setState({filteredAnimeList: this.state.animeList});
+		BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
+	}
+
+	componentWillUnmount() {
+		BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
 	}
 
 	componentDidUpdate(){
@@ -58,27 +64,18 @@ class Home extends Component {
 		this.setState({episodesVisible: true});
 	}
 
+	handleBackPress() {
+		if (this.state.episodesVisible) {
+			this.setState({episodesVisible: false});
+			return true;
+		}
+		return false;
+	}
+
 	render() {
+		const {width, height} = Dimensions.get("window");
 		return (
 			<SafeAreaView style={Style.safeAreaView}>
-				<Modal
-					isVisible={this.state.episodesVisible}
-					swipeDirection="down"
-					onSwipe={() => this.setState({episodesVisible: false})}
-					onBackButtonPress={() => this.setState({episodesVisible: false})}
-					style={{
-						margin: 0
-					}}
-				>
-					<View style={{
-						backgroundColor: bg,
-						width: "100%",
-						height: "100%"
-					}}>
-						<Episodes />
-					</View>
-
-				</Modal>
 				<SearchBar
 					style={Style}
 					handleSearch={this.search.bind(this)}
@@ -138,6 +135,23 @@ class Home extends Component {
 						</View>
 					</View>
 				</View>
+				<SlidePanel
+					visible={this.state.episodesVisible}
+					allowDragging={false}
+					onRequestClose={() => this.setState({episodesVisible: false})}
+					style={{
+						margin: 0
+					}}
+				>
+					<View style={{
+						backgroundColor: bg,
+						width: "100%",
+						height: "100%"
+					}}>
+						<Episodes />
+					</View>
+
+				</SlidePanel>
 			</SafeAreaView>
 		);
 	}
