@@ -52,6 +52,7 @@ class VideoPlayer extends Component {
 	componentWillUnmount() {
 		BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
 		Orientation.unlockAllOrientations();
+		StatusBar.setHidden(false);
 	}
 
 	handleBackPress() {
@@ -75,9 +76,13 @@ class VideoPlayer extends Component {
 		if (mode == "full") {
 			this.setState({fullScreen: true});
 			this.setState({visibleSeeker: false});
+			Orientation.lockToLandscape();
+			StatusBar.setHidden(true);
 		} else if (mode == "regular") {
 			this.setState({fullScreen: false});
 			this.setState({visibleSeeker: true});
+			Orientation.lockToPortrait();
+			StatusBar.setHidden(false);
 		}
 	}
 
@@ -125,7 +130,6 @@ class VideoPlayer extends Component {
 					backgroundColor: "#000"
 				}}
 			>
-				<StatusBar hidden={this.state.fullScreen} />
 				<TouchableWithoutFeedback onPress={this.handleVideoPress}>
 					<Video
 						paused={this.state.paused}
@@ -139,10 +143,10 @@ class VideoPlayer extends Component {
 									height: width / (16 / 9)
 								}
 								: {
-									height,
+									height: height,
 								}
 						}
-						resizeMode="cover"
+						resizeMode="contain"
 						onLoad={this.handleLoad}
 						onProgress={this.handleProgress}
 						onEnd={this.handleEnd}
