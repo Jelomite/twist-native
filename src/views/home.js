@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, ScrollView, Text, Dimensions, BackHandler} from "react-native";
+import {View, ScrollView, Text, BackHandler} from "react-native";
 import Button from "../components/button";
 import {SafeAreaView} from "react-navigation";
 import Style, {bg} from "../style";
@@ -28,7 +28,6 @@ class Home extends Component {
 		this.search = this.search.bind(this);
 		this.press = this.press.bind(this);
 		this.clear = this.clear.bind(this);
-		this.store = this.props.screenProps;
 		this.handleBackPress = this.handleBackPress.bind(this);
 	}
 
@@ -39,12 +38,6 @@ class Home extends Component {
 
 	componentWillUnmount() {
 		BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
-	}
-
-	componentDidUpdate(){
-		if (this.store.state != this.props.screenProps.state){
-			this.store.state = this.props.screenProps.state;
-		}
 	}
 
 	search(term) {
@@ -61,7 +54,7 @@ class Home extends Component {
 	}
 
 	press(anime) {
-		this.setState({episodesVisible: true});
+		//TODO: add api.
 	}
 
 	handleBackPress() {
@@ -73,7 +66,6 @@ class Home extends Component {
 	}
 
 	render() {
-		const {width, height} = Dimensions.get("window");
 		return (
 			<SafeAreaView style={Style.safeAreaView}>
 				<SearchBar
