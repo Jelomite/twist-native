@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, ScrollView, Text, BackHandler} from "react-native";
+import {View, ScrollView, Text, BackHandler, Dimensions} from "react-native";
 import Button from "../components/button";
 import {SafeAreaView} from "react-navigation";
 import Style, {bg} from "../style";
@@ -23,12 +23,14 @@ class Home extends Component {
 			animeList: [],
 			filteredAnimeList: [],
 			episodesVisible: false,
+			panelHeightState: 0.8
 		};
 
 		this.search = this.search.bind(this);
 		this.press = this.press.bind(this);
 		this.clear = this.clear.bind(this);
 		this.handleBackPress = this.handleBackPress.bind(this);
+		this.handleOnDragEnd = this.handleOnDragEnd.bind(this);
 	}
 
 	async componentDidMount() {
@@ -60,9 +62,22 @@ class Home extends Component {
 	handleBackPress() {
 		if (this.state.episodesVisible) {
 			this.setState({episodesVisible: false});
+			this.setState({panelHeightState: 0.8});
 			return true;
 		}
 		return false;
+	}
+
+	handleOnDragEnd(pos) {
+		const {top, bottom} = this.panel.getBounds();
+		if (pos / top < this.state.panelHeightState) {
+			this.panel.transitionTo(bottom);
+			this.setState({panelHeightState: 0.3});
+		} else {
+			this.panel.transitionTo(top);
+			this.setState({panelHeightState: 0.8});
+
+		}
 	}
 
 	render() {
@@ -129,8 +144,13 @@ class Home extends Component {
 				</View>
 				<SlidePanel
 					visible={this.state.episodesVisible}
-					allowDragging={false}
-					onRequestClose={() => this.setState({episodesVisible: false})}
+					allowDragging={true}
+					minimumVelocityThreshold={0}
+					minimumDistanceThreshold={0}
+					onDragEnd={this.handleOnDragEnd}
+					allowMomentum={false}
+					ref={ref => this.panel = ref}
+					draggableRange={{top: Dimensions.get("window").height, bottom: 100}}
 					style={{
 						margin: 0
 					}}
