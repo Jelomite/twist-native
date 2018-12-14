@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, ScrollView, Text, BackHandler, Dimensions} from "react-native";
+import {View, ScrollView, Text, BackHandler} from "react-native";
 import Button from "../components/button";
 import {SafeAreaView} from "react-navigation";
 import Style, {bg} from "../style";
@@ -9,7 +9,7 @@ import List from "../components/list";
 import ChatIcon from "../svg/chat";
 import SettingsIcon from "../svg/settings";
 import Episodes from "./episode";
-import SlidePanel from "rn-sliding-up-panel";
+import Modal from "../components/not-modal";
 
 class Home extends Component {
 	static navigationOptions = {
@@ -30,7 +30,6 @@ class Home extends Component {
 		this.press = this.press.bind(this);
 		this.clear = this.clear.bind(this);
 		this.handleBackPress = this.handleBackPress.bind(this);
-		this.handleOnDragEnd = this.handleOnDragEnd.bind(this);
 	}
 
 	async componentDidMount() {
@@ -68,17 +67,6 @@ class Home extends Component {
 		return false;
 	}
 
-	handleOnDragEnd(pos) {
-		const {top, bottom} = this.panel.getBounds();
-		if (pos / top < this.state.panelHeightState) {
-			this.panel.transitionTo(bottom);
-			this.setState({panelHeightState: 0.3});
-		} else {
-			this.panel.transitionTo(top);
-			this.setState({panelHeightState: 0.8});
-
-		}
-	}
 
 	render() {
 		return (
@@ -142,19 +130,7 @@ class Home extends Component {
 						</View>
 					</View>
 				</View>
-				<SlidePanel
-					visible={this.state.episodesVisible}
-					allowDragging={true}
-					minimumVelocityThreshold={0}
-					minimumDistanceThreshold={0}
-					onDragEnd={this.handleOnDragEnd}
-					allowMomentum={false}
-					ref={ref => this.panel = ref}
-					draggableRange={{top: Dimensions.get("window").height, bottom: 100}}
-					style={{
-						margin: 0
-					}}
-				>
+				<Modal>
 					<View style={{
 						backgroundColor: bg,
 						width: "100%",
@@ -163,7 +139,7 @@ class Home extends Component {
 						<Episodes />
 					</View>
 
-				</SlidePanel>
+				</Modal>
 			</SafeAreaView>
 		);
 	}
