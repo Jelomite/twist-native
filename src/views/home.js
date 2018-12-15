@@ -131,14 +131,7 @@ class Home extends Component {
 					</View>
 				</View>
 				<Modal>
-					<View style={{
-						backgroundColor: bg,
-						width: "100%",
-						height: "100%"
-					}}>
-						<Episodes />
-					</View>
-
+					<Episodes />
 				</Modal>
 			</SafeAreaView>
 		);
