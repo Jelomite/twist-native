@@ -78,11 +78,13 @@ class VideoPlayer extends Component {
 			this.setState({visibleSeeker: false});
 			Orientation.lockToLandscape();
 			StatusBar.setHidden(true);
+			this.props.setAllowDragging(false);
 		} else if (mode == "regular") {
 			this.setState({fullScreen: false});
 			this.setState({visibleSeeker: true});
 			Orientation.lockToPortrait();
 			StatusBar.setHidden(false);
+			this.props.setAllowDragging(true);
 		}
 	}
 

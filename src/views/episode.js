@@ -35,7 +35,7 @@ class Episodes extends Component {
 		const {episodeURIs, currentEpisode} = this.state;
 		return (
 			<SafeAreaView style={Style.safeAreaViewBlack}>
-				<VideoPlayer source={episodeURIs[currentEpisode]} />
+				<VideoPlayer source={episodeURIs[currentEpisode]} {...this.props}/>
 				<ScrollView style={Style.scrollViewNotBlack}>
 					<View style={Style.viewAppleBar}>
 						<View style={Style.viewAppleBarContent}>

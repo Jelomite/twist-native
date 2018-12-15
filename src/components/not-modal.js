@@ -23,13 +23,14 @@ class Modal extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			visible: props.visible
+			visible: props.visible,
+			allowDragging: props.allowDragging
 		};
 		this.transformVal = new Animated.Value(0);
 
 		this._panResponder = PanResponder.create({
 			onMoveShouldSetPanResponder: (evt, gestureState) => {
-				return Math.abs(gestureState.dy) > this.props.minimumDistanceThreshold &&	this.props.allowDragging;
+				return Math.abs(gestureState.dy) > this.props.minimumDistanceThreshold &&	this.state.allowDragging;
 			},
 			onPanResponderGrant: (evt, gestureState) => {
 				this.transformVal.setOffset(this.transformVal._value);
@@ -54,6 +55,12 @@ class Modal extends Component {
 				this.props.onDragEnd(evt, gestureState);
 			}
 		});
+		this.setAllowDragging = this.setAllowDragging.bind(this);
+	}
+
+
+	setAllowDragging(allowDragging) {
+		this.setState({allowDragging});
 	}
 
 	getBounds() {
@@ -81,6 +88,14 @@ class Modal extends Component {
 			extrapolate: "clamp"
 		});
 
+		const childWithProp = React.Children.map(this.props.children, (child) => {
+			return React.cloneElement(child, {
+				translateVal: this.transformVal,
+				allowDragging: this.state.allowDragging,
+				setAllowDragging: this.setAllowDragging
+			});
+		});
+
 		return (
 			<Animated.View
 				{...this._panResponder.panHandlers}
@@ -91,7 +106,7 @@ class Modal extends Component {
 					transform: [{translateY}]
 				}}
 			>
-				{this.props.children}
+				{childWithProp}
 			</Animated.View>
 		);
 	}
