@@ -4,6 +4,7 @@ import {Animated, PanResponder, Dimensions} from "react-native";
 const HEIGHT = Dimensions.get("window").height;
 const TOP_PORTION = 0.3;
 const BOTTOM_PORTION = 0.2;
+const MASS = 150;
 
 class Modal extends Component {
 	static defaultProps = {
@@ -41,15 +42,14 @@ class Modal extends Component {
 			},
 			onPanResponderRelease: (evt, gestureState) => {
 				this.transformVal.flattenOffset();
-				const {dy, vy} = gestureState;
+				const {dy, vy, y0} = gestureState;
 				const {top, bottom} = this.props.draggableRange;
-				if (dy / HEIGHT >  Math.min(TOP_PORTION, 0.3 * TOP_PORTION / vy)) {
+				if (dy + MASS * vy > TOP_PORTION * HEIGHT) {
 					this.transitionTo(bottom, vy);
-				} else if (dy / HEIGHT < -Math.min(BOTTOM_PORTION, -0.1 * BOTTOM_PORTION / vy)) {
+				} else if (dy + MASS * vy < -BOTTOM_PORTION * HEIGHT) {
 					this.transitionTo(top, vy);
 				} else {
-					//here is where speed matters :^)
-					this.transitionTo(dy > 0 ? top : bottom, 1);
+					this.transitionTo(y0 / HEIGHT < 0.5 ? top : bottom);
 				}
 				this.props.onDragEnd(evt, gestureState);
 			}
@@ -60,7 +60,7 @@ class Modal extends Component {
 		return this.props.draggableRange;
 	}
 
-	transitionTo(val, speed) {
+	transitionTo(val, speed = 1.5) {
 		Animated.timing(this.transformVal, {
 			duration: Math.min(200, 300 / Math.abs(speed)),
 			toValue: HEIGHT - val,
