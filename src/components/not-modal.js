@@ -17,7 +17,7 @@ class Modal extends Component {
 		onRequestClose: () => {},
 		allowDragging: true,
 		minimumDistanceThreshold: 0.1,
-
+		collapsedWidth: 80,
 	}
 
 	constructor(props) {
@@ -84,15 +84,17 @@ class Modal extends Component {
 
 		const childHeight = this.transformVal.interpolate({
 			inputRange: [0, top - bottom],
-			outputRange: [top, bottom - 80],
+			outputRange: [top, bottom - this.props.collapsedWidth],
 			extrapolate: "clamp"
 		});
 
 		const childWithProp = React.Children.map(this.props.children, (child) => {
 			return React.cloneElement(child, {
-				translateVal: this.transformVal,
+				transformVal: this.transformVal,
 				allowDragging: this.state.allowDragging,
-				setAllowDragging: this.setAllowDragging
+				setAllowDragging: this.setAllowDragging,
+				draggableRange: this.props.draggableRange,
+				collapsedWidth: this.props.collapsedWidth,
 			});
 		});
 

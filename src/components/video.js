@@ -7,7 +7,8 @@ import {
 	TouchableWithoutFeedback,
 	TouchableOpacity,
 	StatusBar,
-	BackHandler
+	BackHandler,
+	Animated
 } from "react-native";
 import Video from "react-native-video";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -126,11 +127,27 @@ class VideoPlayer extends Component {
 
 	render() {
 		const {width, height} = Dimensions.get("window");
+		const vidWidth = this.props.transformVal.interpolate({
+			inputRange: [0, height],
+			outputRange: [width, this.props.collapsedWidth],
+		});
+		const vidHeight = this.props.transformVal.interpolate({
+			inputRange: [0, height],
+			outputRange: [width * 0.5625, this.props.collapsedWidth * 0.5625],
+		});
+
 		return (
-			<View
-				style={{
-					backgroundColor: "#000"
-				}}
+			<Animated.View
+				style={
+					!this.state.fullScreen
+						? {
+							width: vidWidth,
+							height: vidHeight
+						}
+						: {
+							height: height,
+						}
+				}
 			>
 				<TouchableWithoutFeedback onPress={this.handleVideoPress}>
 					<Video
@@ -138,16 +155,11 @@ class VideoPlayer extends Component {
 						source={{
 							uri: "https://us-at-01.cdn.bunny.sh//anime/jojoougonnokaze/[HorribleSubs]%20JoJo's%20Bizarre%20Adventure%20-%20Golden%20Wind%20-%2001%20[1080p].mp4"
 						}}
-						style={
-							!this.state.fullScreen
-								? {
-									width,
-									height: width / (16 / 9)
-								}
-								: {
-									height: height,
-								}
-						}
+						style={{
+							width: "100%",
+							height: "100%",
+							backgroundColor: "black"
+						}}
 						resizeMode="contain"
 						onLoad={this.handleLoad}
 						onProgress={this.handleProgress}
@@ -209,7 +221,7 @@ class VideoPlayer extends Component {
 						<View />
 					)}
 				</View>
-			</View>
+			</Animated.View>
 		);
 	}
 }
