@@ -10,7 +10,7 @@ class Modal extends Component {
 	static defaultProps = {
 		visible: false,
 		height: HEIGHT,
-		draggableRange: {top: HEIGHT, bottom: 100},
+		draggableRange: {top: HEIGHT, bottom: 160},
 		onDrag: () => {},
 		onDragStart: () => {},
 		onDragEnd: () => {},
@@ -75,13 +75,19 @@ class Modal extends Component {
 			extrapolate: "clamp"
 		});
 
+		const childHeight = this.transformVal.interpolate({
+			inputRange: [0, top - bottom],
+			outputRange: [top, bottom - 80],
+			extrapolate: "clamp"
+		});
+
 		return (
 			<Animated.View
 				{...this._panResponder.panHandlers}
 				style={{
 					position: "absolute",
 					top: 0,
-					height: "100%",
+					height: childHeight,
 					transform: [{translateY}]
 				}}
 			>
