@@ -127,45 +127,61 @@ class VideoPlayer extends Component {
 
 	render() {
 		const {width, height} = Dimensions.get("window");
-		const vidWidth = this.props.transformVal.interpolate({
-			inputRange: [0, height],
-			outputRange: [width, this.props.collapsedWidth],
+		const vidScale = this.props.transformVal.interpolate({
+			inputRange: [0,  height - this.props.collapsedWidth * 2],
+			outputRange: [1, 0.35],
+			extrapolate: "clamp"
 		});
-		const vidHeight = this.props.transformVal.interpolate({
-			inputRange: [0, height],
-			outputRange: [width * 0.5625, this.props.collapsedWidth * 0.5625],
+		const vidTransX = this.props.transformVal.interpolate({
+			inputRange: [1,  height - this.props.collapsedWidth * 2],
+			outputRange: [0, -0.65 * width / 2],
+			extrapolate: "clamp"
 		});
+
+
+
+
+		//when on top, transformVal = 0
+		//when on bottom transformVal = height - this.props.collapsedWidth*2
 
 		return (
 			<Animated.View
-				style={
+				style={[
 					!this.state.fullScreen
 						? {
-							width: vidWidth,
-							height: vidHeight
+							width,
+							height: width * 0.5625
 						}
 						: {
-							height: height,
-						}
+							height
+						},
+					{
+						transform: [{translateX: vidTransX}],
+					}
+				]
 				}
 			>
 				<TouchableWithoutFeedback onPress={this.handleVideoPress}>
-					<Video
-						paused={this.state.paused}
-						source={{
-							uri: "https://us-at-01.cdn.bunny.sh//anime/jojoougonnokaze/[HorribleSubs]%20JoJo's%20Bizarre%20Adventure%20-%20Golden%20Wind%20-%2001%20[1080p].mp4"
-						}}
-						style={{
-							width: "100%",
-							height: "100%",
-							backgroundColor: "black"
-						}}
-						resizeMode="contain"
-						onLoad={this.handleLoad}
-						onProgress={this.handleProgress}
-						onEnd={this.handleEnd}
-						ref={ref => (this.player = ref)}
-					/>
+					<Animated.View style={{
+						alignItems: "flex-start",
+						transform: [{scale: vidScale}]
+					}}>
+						<Video
+							paused={this.state.paused}
+							source={{
+								uri: "https://us-at-01.cdn.bunny.sh//anime/jojoougonnokaze/[HorribleSubs]%20JoJo's%20Bizarre%20Adventure%20-%20Golden%20Wind%20-%2001%20[1080p].mp4"
+							}}
+							style={{
+								width: "100%",
+								height: "100%"
+							}}
+							resizeMode="contain"
+							onLoad={this.handleLoad}
+							onProgress={this.handleProgress}
+							onEnd={this.handleEnd}
+							ref={ref => (this.player = ref)}
+						/>
+					</Animated.View>
 				</TouchableWithoutFeedback>
 				<View>
 					{this.state.visibleSeeker ? (

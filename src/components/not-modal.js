@@ -10,7 +10,7 @@ class Modal extends Component {
 	static defaultProps = {
 		visible: false,
 		height: HEIGHT,
-		draggableRange: {top: HEIGHT, bottom: 160},
+		draggableRange: {top: HEIGHT, bottom: 250},
 		onDrag: () => {},
 		onDragStart: () => {},
 		onDragEnd: () => {},
@@ -82,12 +82,6 @@ class Modal extends Component {
 			extrapolate: "clamp"
 		});
 
-		const childHeight = this.transformVal.interpolate({
-			inputRange: [0, top - bottom],
-			outputRange: [top, bottom - this.props.collapsedWidth],
-			extrapolate: "clamp"
-		});
-
 		const childWithProp = React.Children.map(this.props.children, (child) => {
 			return React.cloneElement(child, {
 				transformVal: this.transformVal,
@@ -104,7 +98,7 @@ class Modal extends Component {
 				style={{
 					position: "absolute",
 					top: 0,
-					height: childHeight,
+					height: this.props.height,
 					transform: [{translateY}]
 				}}
 			>

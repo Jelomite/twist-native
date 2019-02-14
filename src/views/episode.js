@@ -34,44 +34,46 @@ class Episodes extends Component {
 	render() {
 		const {episodeURIs, currentEpisode} = this.state;
 		return (
-			<SafeAreaView style={{
-				flex: 1,
-				backgroundColor: "rgba(255, 255, 255, 0.02)"
-			}}>
+			<React.Fragment>
 				<VideoPlayer source={episodeURIs[currentEpisode]} {...this.props}/>
-				<ScrollView style={Style.scrollViewNotBlack}>
-					<View style={Style.viewAppleBar}>
-						<View style={Style.viewAppleBarContent}>
-							<View style={Style.viewAppleBarRow}>
-								<View>
-									<View style={{opacity: 0.5}}>
-										<Text style={iOSUIKit.footnoteEmphasizedWhite}> ANIME </Text>
+				<SafeAreaView style={{
+					flex: 1,
+					backgroundColor: "rgba(255, 255, 255, 0.02)"
+				}}>
+					<ScrollView style={Style.scrollViewNotBlack}>
+						<View style={Style.viewAppleBar}>
+							<View style={Style.viewAppleBarContent}>
+								<View style={Style.viewAppleBarRow}>
+									<View>
+										<View style={{opacity: 0.5}}>
+											<Text style={iOSUIKit.footnoteEmphasizedWhite}> ANIME </Text>
+										</View>
+										<Text style={iOSUIKit.largeTitleEmphasizedWhite}>
+											{this.state.title}
+										</Text>
+										<Text style={iOSUIKit.footnoteEmphasizedWhite}>
+											{"episode: " + (currentEpisode + 1)}
+										</Text>
+										<View style={{flex: 1}} />
 									</View>
-									<Text style={iOSUIKit.largeTitleEmphasizedWhite}>
-										{this.state.title}
-									</Text>
-									<Text style={iOSUIKit.footnoteEmphasizedWhite}>
-										{"episode: " + (currentEpisode + 1)}
-									</Text>
-									<View style={{flex: 1}} />
 								</View>
 							</View>
 						</View>
-					</View>
-					<View style={{opacity: 0.5, paddingLeft: 16, paddingBottom: 16}}>
-						<Text style={iOSUIKit.footnoteEmphasizedWhite}>
-							{"EPISODES (" + episodeURIs.length + ")"}
-						</Text>
-					</View>
-					<View style={Style.viewEpisodeList}>
-						<List
-							data={this.state.episodeList}
-							style={Style}
-							onPress={this.changeEpisode}
-						/>
-					</View>
-				</ScrollView>
-			</SafeAreaView>
+						<View style={{opacity: 0.5, paddingLeft: 16, paddingBottom: 16}}>
+							<Text style={iOSUIKit.footnoteEmphasizedWhite}>
+								{"EPISODES (" + episodeURIs.length + ")"}
+							</Text>
+						</View>
+						<View style={Style.viewEpisodeList}>
+							<List
+								data={this.state.episodeList}
+								style={Style}
+								onPress={this.changeEpisode}
+							/>
+						</View>
+					</ScrollView>
+				</SafeAreaView>
+			</React.Fragment>
 		);
 	}
 }
