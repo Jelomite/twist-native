@@ -138,6 +138,18 @@ class VideoPlayer extends Component {
 			extrapolate: "clamp"
 		});
 
+		const vidTransY = this.props.transformVal.interpolate({
+			inputRange: [1,  height - this.props.collapsedWidth * 2],
+			outputRange: [0, - (0.65 * width / 2) * 0.5625],
+			extrapolate: "clamp"
+		});
+
+		const contTransY = this.props.transformVal.interpolate({
+			inputRange: [1,  height - this.props.collapsedWidth * 2],
+			outputRange: [0, - (0.65 * width /2) * 0.5625],
+			extrapolate: "clamp"
+		});
+
 
 
 
@@ -163,28 +175,33 @@ class VideoPlayer extends Component {
 			>
 				<TouchableWithoutFeedback onPress={this.handleVideoPress}>
 					<Animated.View style={{
-						alignItems: "flex-start",
-						transform: [{scale: vidScale}]
+						transform: [{translateY: vidTransY}]
 					}}>
-						<Video
-							paused={this.state.paused}
-							source={{
-								uri: "https://us-at-01.cdn.bunny.sh//anime/jojoougonnokaze/[HorribleSubs]%20JoJo's%20Bizarre%20Adventure%20-%20Golden%20Wind%20-%2001%20[1080p].mp4"
-							}}
-							style={{
-								width: "100%",
-								height: "100%"
-							}}
-							resizeMode="contain"
-							onLoad={this.handleLoad}
-							onProgress={this.handleProgress}
-							onEnd={this.handleEnd}
-							ref={ref => (this.player = ref)}
-						/>
+						<Animated.View style={{
+							alignItems: "flex-start",
+							transform: [{scale: vidScale}],
+							backgroundColor: "black",
+						}}>
+							<Video
+								paused={this.state.paused}
+								source={{
+									uri: "https://us-at-01.cdn.bunny.sh//anime/jojoougonnokaze/[HorribleSubs]%20JoJo's%20Bizarre%20Adventure%20-%20Golden%20Wind%20-%2001%20[1080p].mp4"
+								}}
+								style={{
+									width: "100%",
+									height: "100%"
+								}}
+								resizeMode="contain"
+								onLoad={this.handleLoad}
+								onProgress={this.handleProgress}
+								onEnd={this.handleEnd}
+								ref={ref => (this.player = ref)}
+							/>
+						</Animated.View>
 					</Animated.View>
 				</TouchableWithoutFeedback>
 				<View>
-					{this.state.visibleSeeker ? (
+					{this.state.visibleSeeker && this.props.allowSeeker ? (
 						<View>
 							<View
 								style={{

@@ -10,7 +10,7 @@ class Modal extends Component {
 	static defaultProps = {
 		visible: false,
 		height: HEIGHT,
-		draggableRange: {top: HEIGHT, bottom: 250},
+		draggableRange: {top: HEIGHT, bottom: 160},
 		onDrag: () => {},
 		onDragStart: () => {},
 		onDragEnd: () => {},
@@ -24,7 +24,8 @@ class Modal extends Component {
 		super(props);
 		this.state = {
 			visible: props.visible,
-			allowDragging: props.allowDragging
+			allowDragging: props.allowDragging,
+			allowSeeker: true
 		};
 		this.transformVal = new Animated.Value(0);
 
@@ -38,6 +39,9 @@ class Modal extends Component {
 				this.props.onDragStart(evt, gestureState);
 			},
 			onPanResponderMove: (evt, gestureState) => {
+				if (this.state.allowSeeker) {
+					this.setState({allowSeeker: false});
+				}
 				this.transformVal.setValue(gestureState.dy);
 				this.props.onDrag(evt, gestureState);
 			},
@@ -68,6 +72,9 @@ class Modal extends Component {
 	}
 
 	transitionTo(val, speed = 1.5) {
+		if (val == HEIGHT) {
+			this.setState({allowSeeker: true});
+		}
 		Animated.timing(this.transformVal, {
 			duration: Math.min(200, 300 / Math.abs(speed)),
 			toValue: HEIGHT - val,
@@ -89,6 +96,7 @@ class Modal extends Component {
 				setAllowDragging: this.setAllowDragging,
 				draggableRange: this.props.draggableRange,
 				collapsedWidth: this.props.collapsedWidth,
+				allowSeeker: this.state.allowSeeker,
 			});
 		});
 
